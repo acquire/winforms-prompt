@@ -13,7 +13,7 @@ Prompt.ShowDialog("Apple Count", "How many apples do you have?");
 
 ![alt tag](prompt2.png)
 
-```
+```c#
 Prompt.ShowDialog("Apple Count", How many apples do you have?", "0");
 ```
 
