@@ -13,10 +13,31 @@ public static class Prompt
     /// <summary>
     /// Displays a prompt dialog and returns a value.
     /// </summary>
+    /// <returns>Returns user input value. If user enters nothing empty string is returned.</returns>
+    public static string ShowDialog()
+    {
+        return ShowDialog("Prompt", "Input value: ", "");
+    }
+
+    /// <summary>
+    /// Displays a prompt dialog and returns a value.
+    /// </summary>
     /// <param name="title">Text to be shown in the windowbar</param>
     /// <param name="message">Message to get user to input a value</param>
     /// <returns>Returns user input value. If user enters nothing empty string is returned.</returns>
     public static string ShowDialog(string title, string message)
+    {
+        return ShowDialog(title, message, "");
+    }
+
+    /// <summary>
+    /// Displays a prompt dialog and returns a value.
+    /// </summary>
+    /// <param name="title">Text to be shown in the windowbar</param>
+    /// <param name="message">Message to get user to input a value</param>
+    /// <param name="defaultValue">The default value to assist user input</param>
+    /// <returns>Returns user input value. If user enters nothing empty string is returned.</returns>
+    public static string ShowDialog(string title, string message, string defaultValue)
     {
         //Create controls and set default values
         Form dialog = new Form() { Width = 300, Height = 129, FormBorderStyle = FormBorderStyle.FixedDialog, Text = title, StartPosition = FormStartPosition.CenterScreen };
@@ -38,6 +59,7 @@ public static class Prompt
         dialog.AcceptButton = button1; //press enter to accept
         label1.Text = message; //prompt the user to type something
         label1.AutoSize = true; //incase text is longer than label, text don't get chopped off
+        textBox1.Text = defaultValue;
 
         //If ok is pressed, return the user input text, else return empty string
         return dialog.ShowDialog() == DialogResult.OK ? textBox1.Text : "";
